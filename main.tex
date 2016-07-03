@@ -1,0 +1,18 @@
+\documentclass[a4paper,10pt]{report}
+
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+
+\usepackage{siunitx} % load siunitx package
+\sisetup{per-mode=symbol}
+
+\newcommand{\dl}[1]{\directlua{#1}}
+\newcommand{\dlts}[1]{\dl{tex.sprint(#1)}}
+
+\dl{require('main.lua')}
+
+
+\begin{document}
+
+
+
+\end{document}

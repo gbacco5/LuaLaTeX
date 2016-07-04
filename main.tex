@@ -1,3 +1,5 @@
+% !TeX program = lualatex
+
 \documentclass[a4paper,10pt]{report}
 
 \usepackage{amsmath,amsthm,amssymb,amsfonts}
@@ -10,7 +12,7 @@
 \newcommand{\dlts}[1]{\dl{tex.sprint(#1)}}
 % \directlua{tex.sprint()} for even lazier ones
 
-\dl{require('main.lua')}
+%\dl{require('main.lua')}
 % load some data and functions
 
 \newcommand{\sidlts}[2]{%

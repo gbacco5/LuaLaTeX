@@ -6,13 +6,30 @@
 \sisetup{per-mode=symbol}
 
 \newcommand{\dl}[1]{\directlua{#1}}
+% \directlua shortcut, for the lazy ones
 \newcommand{\dlts}[1]{\dl{tex.sprint(#1)}}
+% \directlua{tex.sprint()} for even lazier ones
 
 \dl{require('main.lua')}
+% load some data and functions
+
+\newcommand{\sidlts}[2]{%
+  \dl{sivalue,siprex = get_eng_prefix(#1,'tex')}% get eng. number
+    \SI{\dlts{sivalue}}{\dlts{siprex}#2}% print with SIunitX
+  }
+% \SI of \directlua of tex.sprint + get the u.m. prefix
+% EXAMPLE: lightning voltage is about 1e8 volts, while
+% current is 30 kA on average. So power is
+% P = V I = 1e8*3e4 = 3e12 W = 3 TW
+% if you want to obtain that nice formatted number you could simply do
+% \sidlts{1e8*30e3}{\watt}
 
 
 \begin{document}
+Hello, Lua\LaTeX{}!
 
+\texttt{dl} in the following stands for \texttt{directlua}, the Lua\LaTeX{} command
+for invoking Lua.
 
 
 \end{document}

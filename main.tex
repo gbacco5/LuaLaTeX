@@ -7,6 +7,8 @@
 \usepackage{siunitx} % load siunitx package
 \sisetup{per-mode=symbol}
 
+\usepackage[dvipsnames,svgnames]{xcolor}
+
 \newcommand{\dl}[1]{\directlua{#1}}
 % \directlua shortcut, for the lazy ones
 \newcommand{\dlts}[1]{\dl{tex.sprint(#1)}}
@@ -20,18 +22,30 @@
     \SI{\dlts{sivalue}}{\dlts{siprex}#2}% print with SIunitX
   }
 % \SI of \directlua of tex.sprint + get the u.m. prefix
-% EXAMPLE: lightning voltage is about 1e8 volts, while
+% Example: lightning voltage is about 1e8 volts, while
 % current is 30 kA on average. So power is
 % P = V I = 1e8*3e4 = 3e12 W = 3 TW
 % if you want to obtain that nice formatted number you could simply do
 % \sidlts{1e8*30e3}{\watt}
 
+\usepackage{listings}
+\input{lststyle/lua}
+\input{lststyle/latex}
+
 
 \begin{document}
 Hello, Lua\LaTeX{}!
 
-\texttt{dl} in the following stands for \texttt{directlua}, the Lua\LaTeX{} command
+\lstinline[style=LaTeX]|\dl| in the following stands for 
+\lstinline[style=LaTeX]|\directlua|, 
+the Lua\LaTeX{} 
+command
 for invoking Lua.
 
+\begin{lstlisting}[style=LaTeX]
+\directlua{something}
+
+\dlts{something else}
+\end{lstlisting}
 
 \end{document}

@@ -1,0 +1,44 @@
+% usage: \lstinputlisting[style=LaTeX]{filename}
+
+\lstdefinestyle{LaTeX} {language={[LaTeX]Tex},
+% Use MATLAB
+%        frame=single,                           % Single frame around code
+basicstyle=\small\ttfamily,             % Use small true type font
+keywordstyle=\color{RoyalBlue},%\bfseries,
+%blue
+%keywordstyle=[2]\color{Purple},         % MATLAB function arguments purple
+%keywordstyle=[3]\color{Blue}\underbar,  % User functions underlined and 
+%%blue
+%identifierstyle=,                       % Nothing special about identifiers
+% Comments small dark green courier
+commentstyle=\color{Green}\ttfamily,
+stringstyle=\rmfamily,
+stepnumber=2,
+numbersep=8pt,
+showstringspaces=false,
+%frameround=ftff,
+%frame=single
+	tabsize=4,                              % 5 spaces per tab
+	%
+	%%% Put standard MATLAB functions not included in the default
+	%%% language here
+	morekeywords={dl,dlts,sidlts,directlua},
+	%
+	%%% Put MATLAB function parameters here
+	%morekeywords=[2]{on, off, interp},
+	%
+	%%% Put user defined functions here
+	%morekeywords=[3]{FindESS, homework_example},
+	%
+	morecomment=[l][\color{Blue}]{...},     % Line continuation (...) like blue 
+	%comment
+	numbers=left,                           % Line numbers on left
+	firstnumber=1,                          % Line numbers start with line 1
+	numberstyle=\tiny,          % Line numbers are blue
+	stepnumber=2,                            % Line numbers go in steps of 5
+	backgroundcolor=\color{red!8},
+	breaklines=true,
+	xleftmargin=7mm,
+	xrightmargin=0mm
+}
+

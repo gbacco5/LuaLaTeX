@@ -1,6 +1,6 @@
 % !TeX program = lualatex
 
-\documentclass[a4paper,10pt]{report}
+\documentclass[a4paper,10pt]{article}
 
 \usepackage{amsmath,amsthm,amssymb,amsfonts}
 
@@ -31,21 +31,66 @@
 \usepackage{listings}
 \input{lststyle/lua}
 \input{lststyle/latex}
+\input{lststyle/lualatex}
+\usepackage{showexpl}
+
+\newcommand{\lualatex}{Lua\LaTeX}
+\lstnewenvironment{llcode}{\lstset{style=ll}}{}
+
+
 
 
 \begin{document}
+\lstset{style=ll}
+
 Hello, Lua\LaTeX{}!
 
-\lstinline[style=LaTeX]|\dl| in the following stands for 
-\lstinline[style=LaTeX]|\directlua|, 
-the Lua\LaTeX{} 
-command
-for invoking Lua.
+\lstinline|\dl| in the following stands for 
+\lstinline|\directlua|, 
+the \lualatex{} command for invoking Lua.
+Then \lstinline|\dlts{#}| stands for
+\lstinline|\directlua{tex.sprint(#)}|, where \lstinline|tex.sprint| prints its 
+argument into the output PDF.
 
-\begin{lstlisting}[style=LaTeX]
-\directlua{something}
 
-\dlts{something else}
-\end{lstlisting}
+
+\section{Easy goals}
+\subsection{Pass a \TeX variable to Lua}
+It is pretty straightforward:
+\begin{LTXexample}[pos=r,style=ll]
+\newcommand{\latexvar}{5}
+\newcommand{\latexname}{Cristina}
+\dl{texvar = \latexvar
+	texname = '\latexname'}
+%
+\dlts{texvar} is \dlts{texname}'s favorite number.
+\end{LTXexample}
+
+
+\subsection{Pass a Lua variable to PDF}
+It has already been shown, through
+\begin{LTXexample}[pos=r,style=ll]
+\dl{name = 'Mario'
+	age = 37
+	favnum = math.pi
+	}
+%
+\dl{tex.print(name .. ' is ' .. age .. ' years old.')}
+\dlts{name}'s favorite number is {\dlts{favnum}}.
+\end{LTXexample}
+\lstinline|tex.print| is an alternative for \lstinline|tex.sprint|. In the 
+following \lstinline|\dlts| will be used.
+
+
+\subsection{Pass a Lua variable to \TeX}
+This is a bit trickier. Let's try
+\begin{LTXexample}[pos=r,style=ll]
+\newcounter{mycounter}
+\setcounter{mycounter}{\dlts{age}}
+\newcommand{\luaname}{\dlts{name}}
+\arabic{mycounter} is
+\luaname's age.
+\end{LTXexample}
+
 
 \end{document}

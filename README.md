@@ -12,7 +12,7 @@ Some LuaLaTeX code
 **Main goals**:
 
 1. format a number in engineering notation with Lua and SIunitX
-2. create a kind of `\plot` command, giving the filame of the data file
+2. create a kind of `\plot` command, giving the filename of the data file
 3. the same but for tables
 
 **Future goals**:
